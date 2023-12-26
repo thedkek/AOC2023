@@ -28,12 +28,27 @@ def part_one():
 
 
 def part_two():
-
-
+    total = 0
     with open("Day2\input.txt", "r") as f:
         lines = f.readlines()
 
     for l in lines:
-        pass
-   
-part_one()
+        r = []
+        g = []
+        b = []
+
+        matches = re.findall(r"((\d+) (red|green|blue))", l)
+        for m in matches:
+            if m[2] == 'red':
+                r.append(int(m[1]))
+            elif m[2] == 'green':
+                g.append(int(m[1]))
+            else:
+                b.append(int(m[1]))
+        
+        total += max(r) * max(g) * max(b)
+    
+    print(total)
+
+# part_one()
+part_two()
